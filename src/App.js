@@ -1,42 +1,29 @@
 import React from 'react';
-import Nav from 'react-bootstrap/Nav';
 
 import {
     BrowserRouter as Router,
     Switch,
     Route,
-    Link,
 } from 'react-router-dom';
 import Home          from './pages/Home';
 import CreateArticle from './pages/CreateArticle';
 import DeleteArticle from './pages/DeleteArticle';
+import CreateComment from './pages/CreateComment';
+import DeleteComment from './pages/DeleteComment';
 import NotFound      from './pages/NotFound';
 
+import Navigation from './components/Navigation';
 
 const App = () => {
   return (
     <Router>
-      <Nav>
-        <Nav.Item>
-          <Nav.Link as={Link}  to="/">
-            Home
-          </Nav.Link>
-        </Nav.Item>
-        <Nav.Item>
-          <Nav.Link as={Link} to="/articles/create">
-            Create article
-          </Nav.Link>
-        </Nav.Item>
-        <Nav.Item>
-          <Nav.Link as={Link} to="/articles/delete">
-            Delete article
-          </Nav.Link>
-        </Nav.Item>
-      </Nav>
+      <Navigation/>
       <Switch>
         <Route exact path="/"          component={Home} />
         <Route path="/articles/create" component={CreateArticle}  />
         <Route path="/articles/delete" component={DeleteArticle}  />  
+        <Route path="/comments/create" component={CreateComment} />
+        <Route path="/comments/delete" component={DeleteComment} />
         <Route path="*"                component={NotFound} /> 
       </Switch>
     </Router>
