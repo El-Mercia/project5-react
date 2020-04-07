@@ -5,14 +5,15 @@ import {
     Switch,
     Route,
 } from 'react-router-dom';
+
+import Navigation from './components/Navigation';
+
 import Home          from './pages/Home';
 import CreateArticle from './pages/CreateArticle';
 import DeleteArticle from './pages/DeleteArticle';
 import CreateComment from './pages/CreateComment';
 import DeleteComment from './pages/DeleteComment';
 import NotFound      from './pages/NotFound';
-
-import Navigation from './components/Navigation';
 
 const App = () => {
   return (

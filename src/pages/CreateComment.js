@@ -5,20 +5,18 @@ import Button from 'react-bootstrap/Button';
 
 
 const CreateComment = () => {
-    const [ content, setContent ]       = useState("");
+    const [ content, setContent ]     = useState("");
     const [ authorId, setAuthorId ]   = useState("");
     const [ articleId, setArticleId ] = useState("");
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        console.log("articleId : ", articleId);
         console.log("content : ", content);
         console.log("authorId : ", authorId);
+        console.log("articleId : ", articleId);
         }
 
     const handleChange = (event) => {
-        console.log("target name : ", event.target.name);
-        console.log("target value : ", event.target.value);
 
         /*if (event.target.name === "article_id") {
             setArticle_id(event.target.value);
