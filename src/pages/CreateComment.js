@@ -6,9 +6,9 @@ import Button from 'react-bootstrap/Button';
 
 
 const CreateComment = () => {
+    const [ article_id, setArticle_id ] = useState("");
+    const [ author, setAuthor ]   = useState(""); 
     const [ content, setContent ]     = useState("");
-    const [ authorId, setAuthorId ]   = useState("");
-    const [ articleId, setArticleId ] = useState("");
 
     const handleSubmit = (event) => {
         event.preventDefault();
@@ -20,9 +20,9 @@ const CreateComment = () => {
                 'Accept': 'application/json',
             },
             body: JSON.stringify ({
+                article_id,
+                author,
                 content,
-                authorId,
-                articleId,
             }),
         })
         .then((result) => {
@@ -30,9 +30,9 @@ const CreateComment = () => {
         })
         .then(({ status, extra }) => {
            if (status === "OK") {
+                setArticle_id("");
+                setAuthor("");
                 setContent("");
-                setAuthorId("");
-                setArticleId("");
                 toast.success("Comments has been successfully added");   
            } else {
                toast.error(
@@ -60,16 +60,16 @@ const CreateComment = () => {
         }
         */ 
 
-        switch(event.target.name) {
+        switch(event.target.name) {    
+            case "article_id":
+                setArticle_id(event.target.value);
+                break;  
+            case "author":
+                setAuthor(event.target.value);
+                break;  
             case "content":
                 setContent(event.target.value);
                 break;
-            case "author_id":
-                setAuthorId(event.target.value);
-                break;
-            case "articleId":
-                setArticleId(event.target.value);
-                break;    
             // no default
 
         }
@@ -78,6 +78,26 @@ const CreateComment = () => {
     return (
         <Container>
             <Form onSubmit={handleSubmit}>
+            <Form.Group controlId="comment.article_id">
+                    <Form.Label>ARTICLE ID</Form.Label>
+                    <Form.Control
+                        type="number"
+                        name="article_id"
+                        onChange={handleChange}
+                        value={article_id}
+                        placeholder="Id of your article"
+                />
+                </Form.Group> 
+                <Form.Group controlId="comment.author">
+                    <Form.Label>AUTHOR ID</Form.Label>
+                    <Form.Control
+                        type="number"
+                        name="author"
+                        onChange={handleChange}
+                        value={author}
+                        placeholder="Author id"
+                    />
+                </Form.Group>
                 <Form.Group controlId="comment.content">
                     <Form.Label>CONTENT</Form.Label>
                     <Form.Control
@@ -87,26 +107,6 @@ const CreateComment = () => {
                         value={content}
                         placeholder="Contents of your comments"
                     />
-                </Form.Group>
-                <Form.Group controlId="comment.authorId">
-                    <Form.Label>AUTHOR ID</Form.Label>
-                    <Form.Control
-                        type="number"
-                        name="authorId"
-                        onChange={handleChange}
-                        value={authorId}
-                        placeholder="Author id"
-                    />
-                </Form.Group>
-                <Form.Group controlId="comment.articleId">
-                    <Form.Label>ARTICLE ID</Form.Label>
-                    <Form.Control
-                        type="number"
-                        name="articleId"
-                        onChange={handleChange}
-                        value={articleId}
-                        placeholder="Id of your article"
-                />
                 </Form.Group>
                 <Button variant="primary" type="submit">Create Comments</Button>
             
