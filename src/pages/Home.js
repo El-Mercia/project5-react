@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 
 import { formatDate} from '../utils/date';
 
@@ -34,7 +35,7 @@ const Home = () => {
             <Card key={id}>
                 <Card.Header>
                     <Card.Title as= "h5">
-                        {title}
+                        <Link to={"/article/" + id}>{title}</Link>
                     </Card.Title>
                 </Card.Header>
                 <Card.Body>
@@ -44,9 +45,9 @@ const Home = () => {
                 </Card.Body>
                 <Card.Footer>
                     <small className="text-muted">
-                        crée le&nbsp;
+                        Created on&nbsp;
                         {formatDate(created_at)}&nbsp;
-                        par&nbsp;{authorFirstname} {authorLastname.substring(0, 1)}.
+                        by&nbsp;{authorFirstname} {authorLastname.substring(0, 1)}.
                         </small>
                 </Card.Footer>
 
