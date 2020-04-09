@@ -112,10 +112,11 @@ const [ comments, setComments ] = useState([]);
                 {renderedArticles}
             </CardDeck>
         <br />         
-            <h1>Home Page</h1>
             <h2>Last comments</h2>
             <CardDeck>
-                {renderedComments}
+                <div>
+                    {renderedComments}
+                </div>
             </CardDeck>
          </Container>
     );
