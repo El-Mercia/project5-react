@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { toast } from 'react-toastify';
 import Container from 'react-bootstrap/Container';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
@@ -11,10 +12,42 @@ const CreateComment = () => {
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        console.log("content : ", content);
-        console.log("authorId : ", authorId);
-        console.log("articleId : ", articleId);
-        }
+
+        fetch('http://localhost:3001/api/comments/create', {
+            method : "POST",
+            headers: {
+                'Content-Type': 'application/json',
+                'Accept': 'application/json',
+            },
+            body: JSON.stringify ({
+                content,
+                authorId,
+                articleId,
+            }),
+        })
+        .then((result) => {
+            return result.json();
+        })
+        .then(({ status, extra }) => {
+           if (status === "OK") {
+                setContent("");
+                setAuthorId("");
+                setArticleId("");
+                toast.success("Comments has been successfully added");   
+           } else {
+               toast.error(
+                <div>
+                    Oups... error <br />
+                    {extra}
+                </div>
+               );
+           }
+        
+        })
+        .catch((error) => {
+            toast.error("Oups... error");
+        });
+        };
 
     const handleChange = (event) => {
 
