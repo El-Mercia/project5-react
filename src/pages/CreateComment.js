@@ -56,7 +56,7 @@ const CreateComment = () => {
         } else if (event.target.value === "content") { 
             setContent(event.target.value);
         } else {
-            setAuthor_id(event.target.value);
+            setAuthor(event.target.value);
         }
         */ 
 
@@ -85,7 +85,7 @@ const CreateComment = () => {
                         name="article_id"
                         onChange={handleChange}
                         value={article_id}
-                        placeholder="Id of your article"
+                        placeholder="Id of the article to comment"
                 />
                 </Form.Group> 
                 <Form.Group controlId="comment.author">

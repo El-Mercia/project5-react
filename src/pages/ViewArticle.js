@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import {formatDate}                   from '../utils/date';
 import Container                      from 'react-bootstrap/Container';
 import { toast } from 'react-toastify';
+import ViewComment                 from '../components/ViewComment';
 
 
 const ViewArticle = ({ match }) => {
@@ -35,11 +36,11 @@ const ViewArticle = ({ match }) => {
                 {article.content}
             </p>
             <p>
-                posted at {formatDate(new Date())}<br />
+                created at {formatDate(new Date())}<br />
                 by {article.authorFirstname} {article.authorLastname}
             </p>
             <div>
-                COMMENTS
+                <ViewComment article_id = { id } />      
             </div>
         </Container>
     );
