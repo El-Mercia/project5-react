@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import {formatDate}                   from '../utils/date';
 import Container                      from 'react-bootstrap/Container';
-import { toast } from 'react-toastify';
-import ViewComment                 from '../components/ViewComment';
+import { toast }                      from 'react-toastify';
+import ViewComment                    from '../components/ViewComment';
 
 
 const ViewArticle = ({ match }) => {

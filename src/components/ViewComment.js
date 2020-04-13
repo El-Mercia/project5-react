@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Link }                       from 'react-router-dom';
 import { formatDate}                  from '../utils/date';
 import Container                      from 'react-bootstrap/Container';
 import CardDeck                       from 'react-bootstrap/CardDeck';
@@ -31,7 +32,9 @@ const [ comments, setComments ] = useState([]);
         return ( 
             <Card key={article_id}>
                 <Card.Header>
-                    
+                <Card.Title as="h5">
+                        <Link to={"/article/" + article_id}>{article_id}</Link>
+                    </Card.Title>
                 </Card.Header>
                 <Card.Body>
                     <Card.Text>
